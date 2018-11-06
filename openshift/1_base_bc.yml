@@ -20,7 +20,8 @@ items:
         FROM centos:7
         MAINTAINER I.Noguchi
         RUN yum -y install vim
-        RUN useradd node -u 9999
+        RUN mkdir -p /var/www/html && chown -R 9999 /var/www
+        RUN useradd ichiro -u 9999
         USER 9999
       type: Dockerfile
     strategy:
