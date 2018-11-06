@@ -19,7 +19,7 @@ fi
 
 if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
   echo "---> Restoring build artifacts..."
-  mv /tmp/artifacts/* /etc/nginx
+  mv /tmp/artifacts/* /tmp
 fi
 
 # Override the default nginx index.html file.
@@ -32,5 +32,8 @@ if [ -f /tmp/src/nginx.conf ]; then
   mv /tmp/src/nginx.conf /etc/nginx/nginx.conf
 fi
 if [ "$(ls -A /tmp/src)" ]; then
-  mv /tmp/src/* /usr/share/nginx/html/
+  mkdir -p /var/www/html
+  mv /tmp/src/* /var/www/html/.
 fi
+
+echo "---> Build complate!"
